@@ -57,31 +57,54 @@ def download_file(url, file_path):
         return None
 
 
-def get_info_str(file_name, file_info):
-    output = [file_name]
+def get_info_str(file_info):
+    output = []
     for key, value in file_info.items():
         output.append(f'*   {key}: {value}')
     return '\n'.join(output)
+
+
+def update_readme(jigyosyo_log, kenall_log):
+    with open('README.md', 'r') as f:
+        readme = f.readlines()
+
+    with open('README.md', 'w') as f:
+        i = 0
+        while i < len(readme):
+            line = readme[i]
+            if line.startswith('*   URL: https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip'):
+                f.write(jigyosyo_log + '\n')
+                i += 3
+            elif line.startswith('*   URL: https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip'):
+                f.write(kenall_log + '\n')
+                i += 3
+            else:
+                f.write(line)
+            i += 1
 
 
 def update_zipcode():
     jigyosyo_name = 'jigyosyo.zip'
     jigyosyo_url = 'https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip'
     jigyosyo_info = download_file(jigyosyo_url, jigyosyo_name)
-    jigyosyo_log = get_info_str(jigyosyo_name, jigyosyo_info)
+    jigyosyo_log = get_info_str(jigyosyo_info)
 
     kenall_name = 'ken_all.zip'
     kenall_url = 'https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip'
     kenall_info = download_file(kenall_url, kenall_name)
-    kenall_log = get_info_str(kenall_name, kenall_info)
+    kenall_log = get_info_str(kenall_info)
+
+    update_readme(jigyosyo_log, kenall_log)
 
     date = datetime.now().strftime('%Y-%m-%d')
 
     output = f'''\
 Update data as of {date}    
 
+jigyosho.zip
 {jigyosyo_log}
 
+kenall.zip
 {kenall_log}
 '''
     print(output)
