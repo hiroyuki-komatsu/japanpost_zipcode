@@ -64,7 +64,7 @@ def get_info_str(file_info):
     return '\n'.join(output)
 
 
-def update_readme(jigyosyo_log, kenall_log):
+def update_readme(jigyosyo_log, kenall_log, utf_kenall_log):
     with open('README.md', 'r') as f:
         readme = f.readlines()
 
@@ -77,6 +77,9 @@ def update_readme(jigyosyo_log, kenall_log):
                 i += 3
             elif line.startswith('*   URL: https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip'):
                 f.write(kenall_log + '\n')
+                i += 3
+            elif line.startswith('*   URL: https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip'):
+                f.write(utf_kenall_log + '\n')
                 i += 3
             else:
                 f.write(line)
@@ -94,7 +97,12 @@ def update_zipcode():
     kenall_info = download_file(kenall_url, kenall_name)
     kenall_log = get_info_str(kenall_info)
 
-    update_readme(jigyosyo_log, kenall_log)
+    utf_kenall_name = 'utf_ken_all.zip'
+    utf_kenall_url = 'https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip'
+    utf_kenall_info = download_file(utf_kenall_url, utf_kenall_name)
+    utf_kenall_log = get_info_str(utf_kenall_info)
+
+    update_readme(jigyosyo_log, kenall_log, utf_kenall_log)
 
     date = datetime.now().strftime('%Y-%m-%d')
 
@@ -106,6 +114,9 @@ jigyosho.zip
 
 kenall.zip
 {kenall_log}
+
+utf_kenall.zip
+{utf_kenall_log}
 '''
     print(output)
 

@@ -26,6 +26,15 @@ Zip code data for addresses in all prefectures (県 / Ken).
 *   Size: 1694772
 *   SHA256: a00fa9474d3f2334eb639ba700bc6976469c944ed0f013fd4689899d540521cb
 
+### utf_ken_all.zip
+
+The UTF-8 version of ken_all.zip.
+
+*   URL: https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip
+*   Date: 2026-02-27
+*   Size: 2033029
+*   SHA256: af3f6477e3dce21556549b53323b1b908d1fe26483e1136e80f3cd79418df9f1
+
 ## Licenses
 
 ### jigyosho.zip
@@ -40,9 +49,10 @@ Establishment Individual Number Data, Japan Post Co., Ltd. does not assert any
 copyright. You are free to distribute it. No permission from Japan Post Co.,
 Ltd. is required.
 
-### ken_all.zip
+### ken_all.zip, utf_ken_all.zip
 
-https://www.post.japanpost.jp/zipcode/dl/readme.html
+https://www.post.japanpost.jp/zipcode/dl/readme.html  
+https://www.post.japanpost.jp/zipcode/dl/utf-readme.html
 
 郵便番号データに限っては日本郵便株式会社は著作権を主張しません。
 自由に配布していただいて結構です。
