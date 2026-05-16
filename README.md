@@ -12,28 +12,29 @@ this repository preserves snapshots of the zip code data with clear versioning.
 
 Zip code data for offices (事業所 / Jigyosho).
 
-*   URL: https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip
-*   Date: 2026-04-02
-*   Size: 774660
-*   SHA256: 14be1030f607c5f819f2f45a485e89511907bdd1d62e7fb1931b6e48a3431c3a
+*   URL: https://www.post.japanpost.jp/service/search/zipcode/download/office/zip/jigyosyo.zip
+*   Date: 2026-05-01
+*   Size: 775090
+*   SHA256: 5233fc9f7d2664eeb2cb35c82e78261e9450243ef818cfd27f823c4507f0714c
+
 
 ### ken_all.zip
 
 Zip code data for addresses in all prefectures (県 / Ken).
 
-*   URL: https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip
-*   Date: 2026-04-02
-*   Size: 1694719
-*   SHA256: 3adc97d8e19e1168a6cdcb2fce759d0e9e613a9a3b630cc180aecfd56ae81eaf
+*   URL: https://www.post.japanpost.jp/service/search/zipcode/download/kogaki/zip/ken_all.zip
+*   Date: 2026-05-01
+*   Size: 1694716
+*   SHA256: ba4c5f20741eaa34651cbdea1e2832806cd12344c5ea15f5c0e8e2583149c836
 
 ### utf_ken_all.zip
 
 The UTF-8 version of ken_all.zip.
 
-*   URL: https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip
-*   Date: 2026-04-02
-*   Size: 2135231
-*   SHA256: e2fad7315ceaae95d5b5696fd652a958677acd055818c563622f6b73761f7ea6
+*   URL: https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip
+*   Date: 2026-05-01
+*   Size: 2033033
+*   SHA256: e9dc6f3c4508d80bd62a3cf6c8bf577d92af2e53d50ef9a99169206a9aa96e52
 
 ## Licenses
 
