@@ -4,6 +4,11 @@ import urllib.request
 from datetime import datetime
 
 
+JIGYOSYO_URL = 'https://www.post.japanpost.jp/service/search/zipcode/download/office/zip/jigyosyo.zip'
+KENALL_URL = 'https://www.post.japanpost.jp/service/search/zipcode/download/kogaki/zip/ken_all.zip'
+UTF_KENALL_URL = 'https://www.post.japanpost.jp/service/search/zipcode/download/utf/zip/utf_ken_all.zip'
+
+
 def get_modified_date(headers):
     last_modified_str = headers.get('Last-Modified')
 
@@ -53,7 +58,7 @@ def download_file(url, file_path):
                 'SHA256': sha256
             }
     except urllib.error.URLError as e:
-        print(f'An error occurred while retrieving the file: {e.reason}')
+        print(f'An error occurred while retrieving the url: {url}\n{e.reason}')
         return None
 
 
@@ -72,13 +77,14 @@ def update_readme(jigyosyo_log, kenall_log, utf_kenall_log):
         i = 0
         while i < len(readme):
             line = readme[i]
-            if line.startswith('*   URL: https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip'):
+            if line.startswith(f'*   URL: {JIGYOSYO_URL}'):
+                
                 f.write(jigyosyo_log + '\n')
                 i += 3
-            elif line.startswith('*   URL: https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip'):
+            elif line.startswith(f'*   URL: {KENALL_URL}'):
                 f.write(kenall_log + '\n')
                 i += 3
-            elif line.startswith('*   URL: https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip'):
+            elif line.startswith(f'*   URL: {UTF_KENALL_URL}'):
                 f.write(utf_kenall_log + '\n')
                 i += 3
             else:
@@ -88,17 +94,17 @@ def update_readme(jigyosyo_log, kenall_log, utf_kenall_log):
 
 def update_zipcode():
     jigyosyo_name = 'jigyosyo.zip'
-    jigyosyo_url = 'https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip'
+    jigyosyo_url = JIGYOSYO_URL
     jigyosyo_info = download_file(jigyosyo_url, jigyosyo_name)
     jigyosyo_log = get_info_str(jigyosyo_info)
 
     kenall_name = 'ken_all.zip'
-    kenall_url = 'https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip'
+    kenall_url = KENALL_URL
     kenall_info = download_file(kenall_url, kenall_name)
     kenall_log = get_info_str(kenall_info)
 
     utf_kenall_name = 'utf_ken_all.zip'
-    utf_kenall_url = 'https://www.post.japanpost.jp/zipcode/dl/utf/zip/utf_ken_all.zip'
+    utf_kenall_url = UTF_KENALL_URL
     utf_kenall_info = download_file(utf_kenall_url, utf_kenall_name)
     utf_kenall_log = get_info_str(utf_kenall_info)
 
