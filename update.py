@@ -113,7 +113,7 @@ def update_zipcode():
     date = datetime.now().strftime('%Y-%m-%d')
 
     output = f'''\
-Update data as of {date}    
+Update data fetched on {date}
 
 jigyosho.zip
 {jigyosyo_log}
